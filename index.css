@@ -1,0 +1,119 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000; /* Black background */
+    color: #4c109f; /* Purple accent for text */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Title Styling */
+h1 {
+    font-size: 3rem;
+    color: #4c109f; /* Brighter purple */
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Links Section Styling */
+.links-section {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.links-section a {
+    color: white;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    background-color: #1a1a1a; /* Darker grey for contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.links-section a:hover {
+    background-color: #4c109f; /* Lighter purple */
+}
+
+.links-section a::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -30px;
+    background-color: #000;
+    color: #4c109f;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.links-section a:hover::after {
+    opacity: 1;
+}
+
+/* Projects Section Styling */
+.projects-section {
+    margin: 80px auto 20px;
+    max-width: 900px;
+    background-color: #1a1a1a; /* Darker grey for contrast */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    height: 70vh;
+    padding: 20px;
+}
+
+/* Scrolling Feature */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Button Styling */
+button {
+    background-color: #bb86fc; /* Purple */
+    color: #000; /* Black text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+button:hover {
+    background-color: #d1b1ff; /* Lighter purple */
+}
+
+.links-section a i {
+    color: #5711b9; /* Purple accent */
+    font-size: 1.5rem; /* Adjust size */
+}
+
+.links-section a:hover i {
+    color: #000; /* Black on hover */
+}
+
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}
