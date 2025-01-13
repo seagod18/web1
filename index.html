@@ -6,21 +6,105 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="index.css"> <!-- CSS file link -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Animation for Bubbles */
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-50vh) scale(1.2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0.3;
+            }
+        }
+
+        .bubble-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Send behind other content */
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px; /* Start below screen */
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        /* Customize Bubbles with Random Sizes and Durations */
+        .bubble:nth-child(1) {
+            left: 10%;
+            width: 25px;
+            height: 25px;
+            animation-duration: 8s;
+        }
+
+        .bubble:nth-child(2) {
+            left: 25%;
+            width: 20px;
+            height: 20px;
+            animation-duration: 12s;
+        }
+
+        .bubble:nth-child(3) {
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            animation-duration: 10s;
+        }
+
+        .bubble:nth-child(4) {
+            left: 75%;
+            width: 15px;
+            height: 15px;
+            animation-duration: 7s;
+        }
+
+        .bubble:nth-child(5) {
+            left: 90%;
+            width: 40px;
+            height: 40px;
+            animation-duration: 14s;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Bubble Background -->
+    <div class="bubble-container">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
     <!-- Title -->
     <h1>Praneel SP Portfolio</h1>
 
     <!-- Links Section -->
     <div class="links-section">
-        <a href="https://github.com/yourusername" target="_blank" data-title="GitHub">
+        <a href="https://github.com/seagod18" target="_blank" data-title="GitHub">
             <i class="fab fa-github"></i>
         </a>
         <a href="https://www.instagram.com/yourusername" target="_blank" data-title="Instagram">
             <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/in/yourusername" target="_blank" data-title="LinkedIn">
+        <a href="https://www.linkedin.com/in/praneel-palacholla-0a672b296/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B8wZtoxCZTc%2BwLxtPOhRjuA%3D%3D" target="_blank" data-title="LinkedIn">
             <i class="fab fa-linkedin"></i>
         </a>
         <a href="mailto:youremail@example.com" data-title="Email">
@@ -28,7 +112,6 @@
         </a>
     </div>
     
-
     <!-- Projects Section -->
     <div class="projects-section">
         <h2>My Projects</h2>
@@ -37,5 +120,32 @@
         <p>Project 3: <a href="https://project3link.com" target="_blank">View Here</a></p>
         <!-- Add more projects as needed -->
     </div>
+
+    <div class="view">
+        <div class="block"></div>
+        <div class="block"></div>
+        <div class="block"></div>
+    </div>
+
+    <div class="comet"></div>
+
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = `${e.clientX}px`;
+            trail.style.top = `${e.clientY}px`;
+    
+            document.body.appendChild(trail);
+    
+            // Remove the trail after a short delay
+            setTimeout(() => {
+                trail.remove();
+            }, 500); // Adjust the duration for the trail to disappear
+        });
+    </script>
+    
+
 </body>
 </html>

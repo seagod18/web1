@@ -117,3 +117,142 @@ footer {
     color: #666;
     font-size: 0.9rem;
 }
+
+/* Animation for Bubbles */
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-50vh) scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0.3;
+    }
+}
+
+.bubble-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Send behind other content */
+}
+
+.bubble {
+    position: absolute;
+    bottom: -100px; /* Start below screen */
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: float 10s infinite ease-in-out;
+    opacity: 0.6;
+}
+
+/* Customize Bubbles with Random Sizes and Durations */
+.bubble:nth-child(1) {
+    left: 10%;
+    width: 25px;
+    height: 25px;
+    animation-duration: 8s;
+}
+
+.bubble:nth-child(2) {
+    left: 25%;
+    width: 20px;
+    height: 20px;
+    animation-duration: 12s;
+}
+
+.bubble:nth-child(3) {
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    animation-duration: 10s;
+}
+
+.bubble:nth-child(4) {
+    left: 75%;
+    width: 15px;
+    height: 15px;
+    animation-duration: 7s;
+}
+
+.bubble:nth-child(5) {
+    left: 90%;
+    width: 40px;
+    height: 40px;
+    animation-duration: 14s;
+}
+
+.cursor-trail {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(76, 16, 159, 0.5); /* Subtle purple */
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fade-out 1s ease-out;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 0.9;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+/* Comet Styles */
+.comet {
+    position: absolute;
+    top: 50%;
+    left: -100px; /* Start off-screen */
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8), 
+                0 0 30px 15px rgba(76, 16, 159, 0.5);
+    animation: comet-travel 12s linear infinite;
+    z-index: 1;
+}
+
+/* Comet Tail */
+.comet::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Comet Animation */
+@keyframes comet-travel {
+    0% {
+        transform: translate(-100px, -100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(120vw, 120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
