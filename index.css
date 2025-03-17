@@ -419,3 +419,69 @@ body.dark-mode .wind-container {
     opacity: 0;
     transform: translate(-50%, -50%);
 }
+
+/* General Responsive Fixes */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Reduce title size */
+    }
+
+    .links-section {
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+    }
+
+    .projects-section {
+        width: 90%;
+        height: auto; /* Remove fixed height */
+        margin: 50px auto;
+        padding: 15px;
+    }
+
+    /* Adjust Neon Border */
+    .neon-border {
+        width: 90%; /* Scale border for smaller screens */
+        height: 80px;
+        left: 5%; /* Center it */
+        top: 20px;
+    }
+
+    /* Reduce Wind Line Length */
+    .wind-line {
+        width: 100px;
+        height: 2px;
+    }
+
+    /* Adjust Button Sizes */
+    button, .toggle-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    /* Reduce Neon Title Size */
+    .neon-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Ultra Small Screens */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .neon-title {
+        font-size: 2rem;
+    }
+
+    .projects-section {
+        width: 95%;
+    }
+
+    .links-section {
+        flex-direction: column; /* Stack icons vertically */
+        top: 5px;
+        right: 5px;
+    }
+}
