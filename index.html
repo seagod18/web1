@@ -16,11 +16,11 @@
             }
             50% {
                 transform: translateY(-50vh) scale(1.2);
-                opacity: 0.8;
+                opacity: 0.9;
             }
             100% {
                 transform: translateY(-100vh) scale(1);
-                opacity: 0.3;
+                opacity: 0.4;
             }
         }
 
@@ -80,8 +80,17 @@
             height: 40px;
             animation-duration: 14s;
         }
+        .bubble:nth-child(6) {
+            left: 80%;
+            width: 20px;
+            height: 20px;
+            animation-duration: 11s;
+        }
     </style>
 </head>
+
+<script src="index.js"></script>
+
 
 <body>
     <!-- Bubble Background -->
@@ -93,33 +102,39 @@
         <div class="bubble"></div>
     </div>
 
-    <!-- Title -->
-    <h1>Praneel SP Portfolio</h1>
+    <!-- Title 
+    <h1>Praneel SP Portfolio</h1> -->
+
+    <div class="neon-title-container">
+        <h1 class="neon-title">Praneel S P Portfolio</h1>
+        <div class="neon-border"></div>
+        <div class="sparks"></div>
+    </div>
 
     <!-- Links Section -->
-    <div class="links-section">
-        <a href="https://github.com/seagod18" target="_blank" data-title="GitHub">
+    <section class="links-section">
+        <a href="https://github.com/seagod18" target="_blank" aria-label="GitHub">
             <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.instagram.com/yourusername" target="_blank" data-title="Instagram">
+        <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
             <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/in/praneel-palacholla-0a672b296/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B8wZtoxCZTc%2BwLxtPOhRjuA%3D%3D" target="_blank" data-title="LinkedIn">
+        <a href="https://www.linkedin.com/in/praneel-palacholla-0a672b296/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3B8wZtoxCZTc%2BwLxtPOhRjuA%3D%3D" target="_blank" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
         </a>
-        <a href="mailto:youremail@example.com" data-title="Email">
+        <a href="mailto:youremail@example.com" aria-label="Email">
             <i class="fas fa-envelope"></i>
         </a>
-    </div>
-    
+    </section>
+
     <!-- Projects Section -->
-    <div class="projects-section">
+    <section class="projects-section">
         <h2>My Projects</h2>
         <p>Project 1: <a href="https://www.youtube.com/watch?v=aw_keCeuP9U" target="_blank">View Here</a></p>
         <p>Project 2: <a href="https://www.youtube.com/watch?v=_CFnd5MVqqo" target="_blank">View Here</a></p>
         <p>Project 3: <a href="https://project3link.com" target="_blank">View Here</a></p>
         <!-- Add more projects as needed -->
-    </div>
+    </section>
 
     <div class="view">
         <div class="block"></div>
@@ -129,23 +144,39 @@
 
     <div class="comet"></div>
 
+    <!-- Dark Mode Toggle Button -->
+    <section class="toggle-container">
+        <button class="toggle-btn" id="darkModeToggle">Toggle Dark Mode</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Praneel SP | All Rights Reserved</p>
+    </footer>
 
     <script>
-        document.addEventListener('mousemove', (e) => {
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            trail.style.left = `${e.clientX}px`;
-            trail.style.top = `${e.clientY}px`;
-    
-            document.body.appendChild(trail);
-    
-            // Remove the trail after a short delay
-            setTimeout(() => {
-                trail.remove();
-            }, 500); // Adjust the duration for the trail to disappear
+        // Dark Mode Toggle Script
+        const toggleButton = document.getElementById('darkModeToggle');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
         });
     </script>
-    
+
+    <!-- Wind Animation in Light Mode -->
+    <div class="wind-container">
+        <div class="wind-container">
+            <div class="wind-line left-to-right"></div>
+            <div class="wind-line left-to-right"></div>
+            <div class="wind-line left-to-right"></div>
+            <div class="wind-line left-to-right"></div>
+            <div class="wind-line right-to-left"></div>
+            <div class="wind-line right-to-left"></div>
+            <div class="wind-line right-to-left"></div>
+            <div class="wind-line right-to-left"></div>
+            <!-- Add more lines as needed -->
+        </div>
+        
+    </div>
 
 </body>
 </html>
