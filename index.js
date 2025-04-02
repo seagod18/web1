@@ -1,15 +1,17 @@
-// Theme toggle functionality
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// Check for saved theme preference
+// Check for saved theme preference and apply the correct background
 if (localStorage.getItem('theme') === 'light') {
   body.classList.add('light-mode');
+} else {
+  body.classList.add('dark-mode');  // Ensure default dark mode is applied
 }
 
 themeToggle.addEventListener('click', () => {
   body.classList.toggle('light-mode');
-  
+  body.classList.toggle('dark-mode');
+
   // Save theme preference
   if (body.classList.contains('light-mode')) {
     localStorage.setItem('theme', 'light');
@@ -17,6 +19,7 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', 'dark');
   }
 });
+
 
 // Scroll animations
 const sections = document.querySelectorAll('section');
