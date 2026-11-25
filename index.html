@@ -3,214 +3,311 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+  <title>Praneel S P</title>
+  <meta name="description" content="Praneel S P — computer science student at Appalachian State University and intern at HuskyVoice AI, working on AI voice agents.">
+  <meta name="theme-color" content="#08080a">
+  <meta property="og:title" content="Praneel S P">
+  <meta property="og:description" content="CS student at App State. Interning in voice AI at HuskyVoice.">
+  <meta property="og:image" content="assets/portrait.jpg">
+
+  <script>
+    // Theme: saved choice, else follow the OS. Runs before paint so there's no flash.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = t;
+      document.querySelector('meta[name="theme-color"]').content = t === 'light' ? '#fbfbfd' : '#08080a';
+    })();
+
+    // Only hide things for the intro animation if motion is allowed. If the
+    // animation library never loads, the page still shows itself after 2.5s.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+      setTimeout(function () { if (!window.gsap) document.documentElement.classList.remove('anim'); }, 2500);
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="index.js"></script>
 </head>
 <body>
-  <header>
-    <div class="logo animate-fade-in">Portfolio</div>
-    <div class="social-links">
-      <a href="https://github.com/seagod18" target="_blank" class="animate-fade-in delay-1"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/praneel-palacholla-0a672b296/" target="_blank" class="animate-fade-in delay-2"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:praneel18@hotmail.com" class="animate-fade-in delay-3"><i class="fas fa-envelope"></i></a>
-      <a href="https://instagram.com/yourusername" target="_blank" class="animate-fade-in delay-4"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.youtube.com/@ResinlessBehavior-gl7bv" target="_blank" class="animate-fade-in delay-5"><i class="fab fa-youtube"></i></a>
-      <div class="toggle-container animate-fade-in">
-        <div class="theme-toggle" id="theme-toggle">
-          <div class="toggle-ball"></div>
-        </div>
-      </div>
+  <!-- custom cursor (desktop only, hidden on touch via CSS) -->
+  <div class="cursor" aria-hidden="true"><div class="cursor-ring"></div></div>
+  <div class="progress" aria-hidden="true"></div>
+
+  <nav class="nav" id="nav">
+    <a href="#top" class="nav-logo">PSP<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#journey">Experience</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
+    <!-- EDIT: drop your CV into the project folder as resume.pdf -->
+    <div class="nav-right">
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to light mode">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+      </button>
+      <a href="resume.pdf" class="nav-cta" target="_blank" rel="noopener">Résumé</a>
+    </div>
+  </nav>
 
-  <main>
-    <section id="home" class="hero">
-      <img src="./download.jpg" alt="Profile Picture" class="hero-image animate-fade-in">
-      
-      <div class="hero-content">
-          <h1 class="hero-title animate-slide-up">Praneel S P</h1>
-          <h2 class="hero-subtitle animate-slide-up delay-1">Computer Science Student</h2>
-          <p class="animate-slide-up delay-2">Yap yap yap yap</p>
-          <a href="#contact" class="btn animate-slide-up delay-3">Contact Me</a>
+  <main id="top">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+        <div class="grain"></div>
       </div>
-  
-      <div class="hero-side animate-fade-in">
-          <!-- This will be your right-side background/image section -->
-      </div>
-    </section>
 
-    <section id="about">
-      <h2 class="section-title">About Me</h2>
-      <div class="card animate-slide-up">
-        <p class="card-content">
-          Hi, I’m Praneel, a Computer Science major currently studying at Appalachian State University in the USA. I’m passionate about technology, problem-solving, and building innovative digital solutions.<br>
-
-          <br>My interests span across software development, web design, and data-driven applications.<br>
-
-          <br>I enjoy learning new tools and frameworks, and I'm constantly working on improving my skills through personal projects, academic work, and collaborative learning. 
-          My goal is to use technology to make an impact and contribute to meaningful, user-centered solutions.
+      <div class="hero-inner">
+        <p class="eyebrow hero-fade">Student · Intern · Builder</p>
+        <h1 class="hero-title">
+          <span class="line"><span class="split-chars">Praneel</span></span>
+          <span class="line"><span class="split-chars serif">S&nbsp;P.</span></span>
+        </h1>
+        <p class="hero-sub hero-fade">
+          Studying computer science at App State.<br>
+          Interning in <span class="grad">voice AI</span> at HuskyVoice.
         </p>
-        <p class="card-content">
-          More contents go here yap yap yap 
-        </p>
+        <div class="hero-actions hero-fade">
+          <a href="#journey" class="btn btn-primary magnetic"><span>My journey</span></a>
+          <a href="resume.pdf" class="btn btn-ghost magnetic" target="_blank" rel="noopener"><span>Résumé ↗</span></a>
+        </div>
+      </div>
+
+      <div class="scroll-cue hero-fade" aria-hidden="true">
+        <span>Scroll</span><div class="scroll-line"></div>
       </div>
     </section>
 
-    <section id="skills">
-      <h2 class="section-title">Skills</h2>
-      <div class="skill-bars">
-        <div class="skill">
-          <div class="skill-info">
-            <span>Java</span>
-            <span>85%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-progress="85"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-info">
-            <span>HTML/CSS</span>
-            <span>75%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-progress="75"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-info">
-            <span>JavaScript</span>
-            <span>30%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-progress="30"></div>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-info">
-            <span>Python</span>
-            <span>70%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-progress="70"></div>
-          </div>
-        </div>
-        <!--<div class="skill">
-          <div class="skill-info">
-            <span>Python</span>
-            <span>70%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-progress="70"></div>
-          </div>
-        </div>
-      </div>-->
+    <!-- ================= STATEMENT ================= -->
+    <section class="statement">
+      <p class="statement-text split-words">
+        I build software that listens, talks back, and actually ships. Two years ago this site was my first Vercel deploy. Since then I've been learning by building, most recently as an intern working on voice agents that talk to real callers.
+      </p>
     </section>
 
-    <section id="experience">
-      <h2 class="section-title">Experience / Education</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">2023 - Present</div> 
-            <h3>Computer Science Major</h3>
-            <p>Appalachian State University</p>
-            <p>I started my college after completing High school (IB), and I am now a Third year student. </p>
-          </div>
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about">
+      <div class="about-media">
+        <div class="portrait-frame">
+          <picture>
+            <source srcset="assets/portrait.webp" type="image/webp">
+            <img src="assets/portrait.jpg" alt="Praneel S P" class="portrait" loading="lazy" width="960" height="1200">
+          </picture>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">2020 - 2022</div>
-            <h3>High School</h3>
-            <p>IBDP: International Baccalaureate Diploma Programme</p>
-            <p>I decided to embark on this New syllabus, and here I learned to hone my Learning, Research and Writing skills.
-                <br>
-                <br>I took up the subjects of English Language and Literature, French ab initio, Physics, Computer Science, Mathematics and Business Management.
-            </p>
-          </div>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow" data-reveal>About</p>
+        <h2 class="section-title" data-reveal>Curious by default.<br><em class="serif">Shipping by habit.</em></h2>
+        <p data-reveal>
+          I'm Praneel, a computer science student at Appalachian State University. I grew up in India,
+          did the IB Diploma, and came to the US to study the thing I'd been tinkering with since school.
+        </p>
+        <p data-reveal>
+          <!-- EDIT: tune this to what you actually do in the internship -->
+          Right now I'm interning at HuskyVoice AI, working on voice agents that handle real phone
+          conversations: prompt design, call flows, and digging through transcripts to figure out
+          what went wrong. I like problems where the feedback loop is a real person on the other end.
+        </p>
+        <div class="about-tags" data-reveal>
+          <span>Voice AI</span><span>Full-stack</span><span>Prompt engineering</span><span>Web</span>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">2010 - 2020</div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS MARQUEE ================= -->
+    <section class="skills" aria-label="Skills">
+      <!-- EDIT: add or remove skills freely -->
+      <div class="marquee" data-dir="1">
+        <div class="marquee-inner">
+          <span>Python</span><span class="dot">✦</span><span>Java</span><span class="dot">✦</span><span>JavaScript</span><span class="dot">✦</span><span>HTML &amp; CSS</span><span class="dot">✦</span><span>SQL</span><span class="dot">✦</span><span>Git</span><span class="dot">✦</span>
+        </div>
+      </div>
+      <div class="marquee outline" data-dir="-1">
+        <div class="marquee-inner">
+          <span>Voice agents</span><span class="dot">✦</span><span>LLM prompting</span><span class="dot">✦</span><span>APIs</span><span class="dot">✦</span><span>Vercel</span><span class="dot">✦</span><span>GSAP</span><span class="dot">✦</span><span>Debugging at 2am</span><span class="dot">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE + EDUCATION TREE ================= -->
+    <!-- EDIT: each .tl-item is one entry. class "exp" = left branch (Experience),
+         "edu" = right branch (Education). Keep them newest first. -->
+    <section class="journey" id="journey">
+      <div class="journey-head">
+        <p class="eyebrow" data-reveal>Experience &amp; Education</p>
+        <h2 class="section-title" data-reveal>How I <em class="serif">got here.</em></h2>
+      </div>
+
+      <div class="tree">
+        <div class="tree-labels" aria-hidden="true"><span>Experience</span><span>Education</span></div>
+        <div class="tl-line"><div class="tl-fill"></div></div>
+
+        <article class="tl-item exp" style="grid-row: 1">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-kind">Experience</span>
+            <span class="tl-date">2025 — Present</span>
+            <h3>HuskyVoice AI</h3>
+            <p class="tl-org">Intern</p>
+            <canvas class="wave" aria-hidden="true"></canvas>
+            <p>Working on AI voice agents that answer real phone calls for businesses: prompts, call flows, and fixing agent behaviour from call transcripts.</p>
+          </div>
+        </article>
+
+        <article class="tl-item edu" style="grid-row: 1">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-kind">Education</span>
+            <span class="tl-date">2023 — Present</span>
+            <h3>B.S. Computer Science</h3>
+            <p class="tl-org">Appalachian State University</p>
+            <p>Moved to the US for college. Software development, systems, and a lot of late-night projects.</p>
+          </div>
+        </article>
+
+        <article class="tl-item edu" style="grid-row: 2">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-kind">Education</span>
+            <span class="tl-date">2020 — 2022</span>
+            <h3>IB Diploma Programme</h3>
+            <p class="tl-org">International Baccalaureate</p>
+            <p>Computer Science, Physics, Mathematics, Business Management, English Lang &amp; Lit, and French ab initio. This is where I learned to research and write properly.</p>
+          </div>
+        </article>
+
+        <article class="tl-item edu" style="grid-row: 3">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <span class="tl-kind">Education</span>
+            <span class="tl-date">2010 — 2020</span>
             <h3>Schooling</h3>
-            <p>JSS Public School</p>
-            <p>I did my entire schooling up until the 10th grade in the CBSE Syllabus.</p>
+            <p class="tl-org">JSS Public School · CBSE</p>
+            <p>Where it started: ten years of school and the first lines of code.</p>
           </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <div class="timeline-date">2014 - 2018</div>
-            <h3>Bachelor's Degree in Computer Science</h3>
-            <p>University Name</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae sapien sagittis congue.</p>
-          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="contact" id="contact">
+      <div class="contact-glow" aria-hidden="true"></div>
+      <p class="eyebrow" data-reveal>Contact</p>
+      <h2 class="contact-title">
+        <span class="line"><span class="split-chars-scroll">Let's build</span></span>
+        <span class="line"><span class="split-chars-scroll serif">something.</span></span>
+      </h2>
+      <a href="mailto:praneel18@hotmail.com" class="contact-mail magnetic" data-reveal><span>praneel18@hotmail.com</span></a>
+      <div class="socials" data-reveal>
+        <a href="https://github.com/seagod18" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/praneel-palacholla-0a672b296/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/@ResinlessBehavior-gl7bv" target="_blank" rel="noopener">YouTube</a>
+        <a href="resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      </div>
+    </section>
+
+    <!-- Parked for later: the HuskyVoice feature card and the projects section.
+         A <template> is never rendered. To bring a section back, move it out of the template. -->
+    <template id="parked-sections">
+     ================= NOW / HUSKYVOICE ================= 
+    <section class="now" id="now">
+      <div class="now-card">
+        <canvas class="wave" aria-hidden="true"></canvas>
+        <div class="now-content">
+          <p class="eyebrow"><span class="live-dot"></span>Currently</p>
+          <h2 class="now-title" data-reveal>HuskyVoice <span class="serif">AI</span></h2>
+           EDIT: your title + start date 
+          <p class="now-role" data-reveal>Intern · 2025 — Present</p>
+          <p class="now-desc" data-reveal>
+            Designing and shipping AI voice agents that pick up the phone for businesses: booking,
+            answering, routing, and handling the messy edge cases real callers bring.
+          </p>
+           EDIT: swap these for your real highlights / numbers 
+          <ul class="now-list" data-reveal>
+            <li>Built prompt templates and per-agent configs that new agents are spun up from</li>
+            <li>Diagnosed and fixed agent behaviour straight from call transcripts</li>
+            <li>Worked across orgs, agents, and analytics to keep production agents sharp</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="projects">
-      <h2 class="section-title">Projects</h2>
-      <div class="card-container">
-        <div class="project-card">
-          <img src="./download.jpg" alt="Project 1" class="project-img">
-          <div class="project-info">
-            <h3 class="project-title">Project 1</h3>
-            <p class="project-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae sapien sagittis congue.</p>
-            <a href="#" class="project-link">View Project</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="/api/placeholder/400/300" alt="Project 2" class="project-img">
-          <div class="project-info">
-            <h3 class="project-title">Project 2</h3>
-            <p class="project-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae sapien sagittis congue.</p>
-            <a href="#" class="project-link">View Project</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <img src="/api/placeholder/400/300" alt="Project 3" class="project-img">
-          <div class="project-info">
-            <h3 class="project-title">Project 3</h3>
-            <p class="project-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae justo vitae sapien sagittis congue.</p>
-            <a href="#" class="project-link">View Project</a>
-          </div>
+     ================= WORK (horizontal on desktop) ================= 
+    <section class="work" id="work">
+      <div class="work-head">
+        <p class="eyebrow" data-reveal>Selected work</p>
+        <h2 class="section-title" data-reveal>Things I've <em class="serif">built.</em></h2>
+      </div>
+      <div class="work-viewport">
+        <div class="work-track">
+           EDIT: each .project is one card. Change the text, tags and link. 
+          <article class="project" style="--c1:#7b5cff;--c2:#2bd2ff">
+            <div class="project-art"><span class="project-num">01</span><div class="art-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="project-body">
+              <h3>Production voice agents</h3>
+              <p>AI phone agents for real businesses, built from a reusable prompt engine and per-agent configs.</p>
+              <div class="tags"><span>LLMs</span><span>Voice</span><span>Prompting</span></div>
+            </div>
+          </article>
+
+          <article class="project" style="--c1:#ff6a3d;--c2:#ffbd3d">
+            <div class="project-art"><span class="project-num">02</span><div class="art-rings"><i></i><i></i><i></i></div></div>
+            <div class="project-body">
+              <h3>This website</h3>
+              <p>Rebuilt from my very first Vercel deploy. Plain HTML, CSS and JS with GSAP and smooth scrolling. No framework.</p>
+              <div class="tags"><span>GSAP</span><span>Lenis</span><span>Vercel</span></div>
+              <a href="https://github.com/seagod18/web1" target="_blank" rel="noopener" class="project-link">Source ↗</a>
+            </div>
+          </article>
+
+          <article class="project" style="--c1:#21d07a;--c2:#1a8cff">
+            <div class="project-art"><span class="project-num">03</span><div class="art-grid"></div></div>
+            <div class="project-body">
+              <h3>Project three</h3>
+              <p>EDIT: a project from class, a hackathon, or something you built for fun. One or two lines on what it does.</p>
+              <div class="tags"><span>Java</span><span>Python</span></div>
+            </div>
+          </article>
+
+          <article class="project" style="--c1:#ff3d8b;--c2:#8a2be2">
+            <div class="project-art"><span class="project-num">04</span><div class="art-orb"></div></div>
+            <div class="project-body">
+              <h3>Project four</h3>
+              <p>EDIT: another project. Link it to GitHub or a live demo if you can.</p>
+              <div class="tags"><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <article class="project project-more">
+            <div class="project-body">
+              <h3>More on GitHub</h3>
+              <p>Experiments, coursework and half-finished ideas.</p>
+              <a href="https://github.com/seagod18" target="_blank" rel="noopener" class="btn btn-ghost magnetic"><span>github.com/seagod18 ↗</span></a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <h2 class="section-title">Contact Me</h2>
-      <form class="contact-form">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" class="form-input" required></textarea>
-        </div>
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </section>
+    </template>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Praneel S P. All Rights Reserved.</p>
+  <footer class="footer">
+    <span>© <span id="year">2026</span> Praneel S P</span>
+    <span>Built with GSAP &amp; Lenis</span>
+    <a href="#top">Back to top ↑</a>
   </footer>
-
-  <div class="back-to-top" id="back-to-top">
-    <i class="fas fa-arrow-up"></i>
-  </div>
-
-  <script src="index.js"></script>
 </body>
 </html>
